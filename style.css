@@ -57,16 +57,18 @@ pre {
     padding: 15px;
     border-left: 5px solid #4CAF50;
     overflow-x: auto; /* Оставьте для прокрутки при необходимости */
-    font-size: 14px;
+    font-size: 18px;
     line-height: 1.5;
     white-space: pre-wrap; /* Перенос длинных строк */
     word-wrap: break-word; /* Разрыв длинных слов */
+    font-weight: bold;
 }
 
 code {
     font-family: 'Courier New', Courier, monospace;
-    color: #d63384;
+    color: #7d0b44;
     white-space: pre-wrap; /* Перенос длинных строк */
+    font-weight: bold;
 }
 
 ul {
