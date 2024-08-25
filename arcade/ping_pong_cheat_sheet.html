@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шпаргалка: Создание игры Пинг-Понг. Библиотека arcade</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="back-link">
+            <a class="button" href="../index.html">← Вернуться в меню</a>
+        </div>
+        <h1>Шпаргалка: Создание игры "Пинг-Понг" с библиотекой <code>arcade</code></h1>
+
+        <h2>1. Создание окна</h2>
+        <p>Для начала, создайте окно для игры, используя класс <code>Window</code>:</p>
+        <pre><code>import arcade
+
+# Задаем параметры окна
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+SCREEN_TITLE = "Пинг-Понг"
+
+# Создаем окно
+window = arcade.Window(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+arcade.run()</code></pre>
+
+        <h2>2. Создание спрайтов</h2>
+        <p>Для игры вам понадобятся спрайты для ракетки и мяча:</p>
+        <pre><code>class PongGame(arcade.Window):
+    def __init__(self):
+        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+        self.paddle = arcade.Sprite('paddle.png')
+        self.paddle.center_x = SCREEN_WIDTH / 2
+        self.paddle.center_y = SCREEN_HEIGHT / 2
+
+        self.ball = arcade.Sprite('ball.png')
+        self.ball.center_x = SCREEN_WIDTH / 2
+        self.ball.center_y = 50
+        
+        # зададим скорость мяча с помощью встроенных свойств change_x и change_y
+        self.ball.change_x = 5
+        self.ball.change_y = 5
+
+    def on_draw(self):
+        self.clear()
+        self.paddle.draw()
+        self.ball.draw()</code></pre>
+
+        <h2>3. Функция обновления</h2>
+        <p>В функции <code>update()</code> добавляем логику движения мяча и ракетки:</p>
+        <pre><code>def update(self, delta_time):
+    self.ball.center_x += self.ball.change_x
+    self.ball.center_y += self.ball.change_y
+
+    # Проверка на столкновение с верхней границей
+    if self.ball.top > SCREEN_HEIGHT:
+        self.ball.change_y = -5
+
+    # Проверка на столкновение с левой и правой границей
+    if self.ball.right > SCREEN_WIDTH:
+        self.ball.change_x = -5
+    if self.ball.left < 0:
+        self.ball.change_x = 5
+
+    # Проверка на столкновение с ракеткой
+    hit = arcade.check_for_collision(self.ball, self.paddle):
+    if hit==True:
+        self.ball.change_y = 5
+
+    # Проверка на столкновение с нижней границей
+    if self.ball.bottom < 0:
+        self.ball.change_y = 0 
+
+    </code></pre>
+
+        <h2>4. Обработка ввода</h2>
+        <p>Для управления ракетками используйте метод <code>on_key_press</code>:</p>
+        <pre><code>def on_key_press(self, key, modifiers):
+    if key == arcade.key.RIGHT:
+        self.paddle.change_x = 5
+    elif key == arcade.key.LEFT:
+        self.paddle.change_x = -5
+
+def on_key_release(self, key, modifiers):
+    if key == arcade.key.RIGHT:
+        self.paddle.change_x = 0
+    elif key == arcade.key.LEFT:
+        self.paddle.change_x = 0</code></pre>
+
+        <h2>5. Запуск игры</h2>
+        <p>Соединяем все элементы вместе и запускаем игру:</p>
+        <pre><code>window = PongGame()
+arcade.run()</code></pre>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шпаргалка: Создание игры Гонки</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="back-link">
+            <a class="button" href="../index.html">← Вернуться в меню</a>
+        </div>
+        <h1>Шпаргалка: Создание игры "Гонки" с библиотекой <code>arcade</code></h1>
+
+        <h2>1. Основные настройки</h2>
+        <p>Создаем окно для игры и задаем основные параметры, такие как скорость машины и препятствий:</p>
+        <pre><code>import random
+import arcade
+
+SCREEN_WIDTH = 960
+SCREEN_HEIGHT = 720
+SCREEN_TITLE = "Гонки"
+
+CAR_ANGLE = 20  # Угол наклона машины при повороте
+CAR_SPEED = 5  # Скорость движения машины
+WALL_SPEED = 5  # Скорость движения препятствий</code></pre>
+
+        <h2>2. Класс машины</h2>
+        <p>Создаем класс <code>Car</code>, который будет управлять движением машины и ограничивать ее перемещение по экрану:</p>
+        <pre><code>class Car(arcade.Sprite):
+    def update(self):
+        self.center_x += self.change_x  # Обновляем позицию машины по оси X
+        if self.left < 56:
+            self.left = 56  # Ограничение перемещения влево
+        if self.right > SCREEN_WIDTH - 56:
+            self.right = SCREEN_WIDTH - 56  # Ограничение перемещения вправо</code></pre>
+
+        <h2>3. Класс препятствия</h2>
+        <p>Создаем класс <code>Wall</code> для управления движением препятствий и увеличения счета при их прохождении:</p>
+        <pre><code>class Wall(arcade.Sprite):
+    def update(self):
+        self.center_y -= self.change_y  # Двигаем препятствие вниз по экрану
+        if self.top < 0:
+            self.bottom = SCREEN_HEIGHT + random.randint(0, SCREEN_HEIGHT)
+            self.center_x = random.randint(168, SCREEN_WIDTH - 168)
+            window.score += 1  # Увеличиваем счет при прохождении препятствия</code></pre>
+
+        <h2>4. Основной класс игры</h2>
+        <p>Создаем класс <code>MyGame</code>, который будет управлять всеми элементами игры, включая ввод с клавиатуры, обновление и отрисовку объектов:</p>
+        <pre><code>class MyGame(arcade.Window):
+    def __init__(self, width, height, title):
+        super().__init__(width, height, title)
+        self.bg = arcade.load_texture('bg.png')  # Загружаем фоновое изображение
+        self.car = Car("yellow_car.png", 0.8)  # Создаем объект машины
+        self.wall = Wall('wall.png', 0.8)  # Создаем объект препятствия
+        self.game = True
+        self.score = 0  # Начальный счет
+        self.win = False  # Статус победы
+
+    def on_key_release(self, key, modifiers):
+        if key == arcade.key.LEFT or key == arcade.key.RIGHT:
+            self.car.change_x = 0  # Останавливаем машину при отпускании клавиши
+            self.car.angle = 0  # Возвращаем машину в исходное положение
+
+    def on_key_press(self, key, modifiers):
+        if self.game and not self.win:
+            if key == arcade.key.LEFT:
+                self.car.change_x = -CAR_SPEED  # Двигаем машину влево
+                self.car.angle = CAR_ANGLE  # Устанавливаем угол наклона влево
+
+            if key == arcade.key.RIGHT:
+                self.car.change_x = CAR_SPEED  # Двигаем машину вправо
+                self.car.angle = -CAR_ANGLE  # Устанавливаем угол наклона вправо
+
+    def setup(self):
+        self.car.center_x = SCREEN_WIDTH / 2  # Устанавливаем начальную позицию машины
+        self.car.center_y = 100
+        self.wall.center_y = SCREEN_HEIGHT
+        self.wall.center_x = random.randint(168, SCREEN_WIDTH - 168)
+        self.wall.change_y = WALL_SPEED  # Устанавливаем скорость движения препятствия</code></pre>
+
+        <h2>5. Отрисовка и обновление игры</h2>
+        <p>Добавляем функции <code>on_draw</code> и <code>update</code>, чтобы отрисовывать и обновлять объекты на экране, а также проверять столкновения:</p>
+        <pre><code>def on_draw(self):
+        arcade.start_render()
+        arcade.draw_texture_rectangle(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT, self.bg)  # Отрисовка фона
+        self.car.draw()  # Отрисовка машины
+        self.wall.draw()  # Отрисовка препятствия
+        if not self.game:
+            arcade.draw_text("Авария!", SCREEN_WIDTH / 2 - 150, SCREEN_HEIGHT / 2, arcade.color.CYAN, font_size=60)
+        arcade.draw_text(f'Счет:{self.score}', SCREEN_WIDTH - 180, SCREEN_HEIGHT - 40, arcade.color.RED, font_size=33)
+        if self.score >= 10:
+            arcade.draw_text('Победа!', SCREEN_WIDTH / 2 - 180, SCREEN_HEIGHT / 2, arcade.color.CYAN, font_size=60)
+            self.win = True  # Устанавливаем статус победы
+
+def update(self, delta_time):
+    if self.game and not self.win:
+        self.car.update()  # Обновляем положение машины
+        self.wall.update()  # Обновляем положение препятствия
+    if arcade.check_for_collision(self.car, self.wall):
+        self.game = False  # Останавливаем игру при столкновении</code></pre>
+
+        <h2>6. Запуск игры</h2>
+        <p>Запускаем игру:</p>
+        <pre><code>window = MyGame(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+window.setup()
+arcade.run()  # Запускаем главный игровой цикл</code></pre>
+    </div>
+
+</body>
+</html>
