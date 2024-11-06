@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наследование и полиморфизм</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="back-link">
+            <a class="button" href="/index_lvl1.html">← Вернуться в меню</a>
+        </div>
+        <h1>Наследование и полиморфизм</h1>
+        <p>Наследование позволяет одному классу (подклассу) наследовать методы и свойства другого класса (родительского класса). Полиморфизм позволяет методам вести себя по-разному в зависимости от класса объекта.</p>
+
+        <h2>Пример наследования:</h2>
+        <pre><code>class Animal:
+    def speak(self):
+        print("Животное издает звук")
+
+class Dog(Animal):
+    def speak(self):
+        print("Собака говорит: Гав-гав")
+
+dog = Dog()
+dog.speak()  # Вывод: Собака говорит: Гав-гав</code></pre>
+
+        <h2>Полиморфизм в действии:</h2>
+        <pre><code>animals = [Dog(), Animal()]
+
+for animal in animals:
+    animal.speak()
+# Вывод:
+# Собака говорит: Гав-гав
+# Животное издает звук</code></pre>
+    </div>
+</body>
+</html>

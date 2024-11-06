@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рекурсия</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="back-link">
+            <a class="button" href="/index_lvl1.html">← Вернуться в меню</a>
+        </div>
+        <h1>Рекурсия</h1>
+        <p>Рекурсия — это метод, при котором функция вызывает саму себя для решения подзадач. Важно иметь базовый случай, чтобы избежать бесконечной рекурсии.</p>
+
+        <h2>Пример функции для расчета факториала с рекурсией:</h2>
+        <pre><code>def factorial(n):
+    if n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+print(factorial(5))  # Вывод: 120</code></pre>
+
+        <h2>Пример функции для вычисления числа Фибоначчи:</h2>
+        <pre><code>def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
+
+print(fibonacci(7))  # Вывод: 13</code></pre>
+    </div>
+</body>
+</html>

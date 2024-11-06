@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Исключения и их обработка</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="back-link">
+            <a class="button" href="/index_lvl1.html">← Вернуться в меню</a>
+        </div>
+        <h1>Исключения и их обработка</h1>
+        <p>Исключения позволяют обрабатывать ошибки в программе, чтобы избежать ее завершения. Используйте <code>try</code>, <code>except</code> и <code>finally</code> для обработки исключений.</p>
+
+        <h2>Пример обработки исключения:</h2>
+        <pre><code>try:
+    number = int(input("Введите число: "))
+    print(10 / number)
+except ValueError:
+    print("Ошибка: введено не число.")
+except ZeroDivisionError:
+    print("Ошибка: деление на ноль.")
+finally:
+    print("Завершение программы")</code></pre>
+    </div>
+</body>
+</html>

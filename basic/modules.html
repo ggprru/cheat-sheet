@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модули и пакеты</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="back-link">
+            <a class="button" href="/index_lvl1.html">← Вернуться в меню</a>
+        </div>
+        <h1>Модули и пакеты</h1>
+        <p>Модули — это файлы Python, содержащие функции, классы и переменные. Они позволяют организовать и структурировать код. Пакеты — это наборы модулей, которые можно использовать как единое целое.</p>
+
+        <h2>Импорт модуля:</h2>
+        <pre><code># Импорт стандартного модуля math
+import math
+
+print(math.sqrt(16))  # Вывод: 4.0</code></pre>
+
+        <h2>Создание и использование пользовательского модуля:</h2>
+        <pre><code># В файле my_module.py
+def greet(name):
+    return f"Привет, {name}!"
+
+# В основном файле
+import my_module
+
+print(my_module.greet("Алиса"))  # Вывод: Привет, Алиса!</code></pre>
+    </div>
+</body>
+</html>

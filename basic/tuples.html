@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кортежи</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="back-link">
+            <a class="button" href="/index_lvl1.html">← Вернуться в меню</a>
+        </div>
+        <h1>Кортежи</h1>
+        <p>Кортеж — это упорядоченная коллекция элементов, как и список, но кортежи неизменяемы, что означает, что после их создания их нельзя изменить.</p>
+        
+        <h2>Пример работы с кортежами:</h2>
+        <pre><code>fruits = ("яблоко", "банан", "вишня")
+print(fruits[0])  # "яблоко"
+# fruits[0] = "апельсин"  # Ошибка, так как кортеж неизменяем</code></pre>
+        
+        <h2>Основные операции с кортежами:</h2>
+        <ul>
+            <li><code>len()</code> — получение длины кортежа</li>
+            <li><code>count()</code> — подсчет количества элементов</li>
+            <li><code>index()</code> — получение индекса элемента</li>
+        </ul>
+
+        <h2>Пример использования:</h2>
+        <pre><code>print(len(fruits))        # Длина кортежа
+print(fruits.count("банан"))  # Подсчет элементов "банан"
+print(fruits.index("вишня"))  # Индекс элемента "вишня"</code></pre>
+    </div>
+</body>
+</html>

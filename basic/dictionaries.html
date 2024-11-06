@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Словари</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="back-link">
+            <a class="button" href="/index_lvl1.html">← Вернуться в меню</a>
+        </div>
+        <h1>Словари</h1>
+        <p>Словарь — это неупорядоченная коллекция пар "ключ-значение". Каждый элемент в словаре имеет уникальный ключ, который используется для доступа к значению.</p>
+        
+        <h2>Пример работы со словарями:</h2>
+        <pre><code>person = {"имя": "Алиса", "возраст": 25, "город": "Москва"}
+print(person["имя"])  # Выводит "Алиса"</code></pre>
+        
+        <h2>Основные методы работы со словарями:</h2>
+        <ul>
+            <li><code>keys()</code> — получение всех ключей</li>
+            <li><code>values()</code> — получение всех значений</li>
+            <li><code>items()</code> — получение всех пар "ключ-значение"</li>
+            <li><code>get()</code> — получение значения по ключу</li>
+        </ul>
+
+        <h2>Пример использования методов:</h2>
+        <pre><code>print(person.keys())    # Все ключи
+print(person.values())  # Все значения
+print(person.get("город"))  # Значение ключа "город"</code></pre>
+    </div>
+</body>
+</html>

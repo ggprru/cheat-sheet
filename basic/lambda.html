@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лямбда-функции</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="back-link">
+            <a class="button" href="/index_lvl1.html">← Вернуться в меню</a>
+        </div>
+        <h1>Лямбда-функции</h1>
+        <p>Лямбда-функции — это анонимные функции, которые создаются с помощью ключевого слова <code>lambda</code>. Они позволяют создавать небольшие однострочные функции без имени.</p>
+
+        <h2>Пример лямбда-функции:</h2>
+        <pre><code>multiply = lambda x, y: x * y
+print(multiply(3, 4))  # Вывод: 12</code></pre>
+
+        <h2>Использование лямбда-функций с <code>map</code> и <code>filter</code>:</h2>
+        <pre><code># Применение функции к каждому элементу
+numbers = [1, 2, 3, 4]
+squared = list(map(lambda x: x ** 2, numbers))
+print(squared)  # Вывод: [1, 4, 9, 16]
+
+# Фильтрация элементов
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+print(even_numbers)  # Вывод: [2, 4]</code></pre>
+    </div>
+</body>
+</html>

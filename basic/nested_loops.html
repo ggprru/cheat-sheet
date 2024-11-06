@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вложенные Циклы</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="back-link">
+            <a class="button" href="/index_lvl1.html">← Вернуться в меню</a>
+        </div>
+        <h1>Вложенные Циклы</h1>
+        <p>Вложенные циклы — это циклы, расположенные внутри других циклов. Они полезны для работы с многомерными структурами данных, такими как матрицы.</p>
+
+        <h2>Пример вложенного цикла:</h2>
+        <pre><code>for i in range(3):
+    for j in range(3):
+        print(f"i={i}, j={j}")</code></pre>
+
+        <h2>Пример таблицы умножения:</h2>
+        <pre><code>for i in range(1, 10):
+    for j in range(1, 10):
+        print(f"{i} * {j} = {i * j}", end="\t")
+    print()</code></pre>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Параметры и Возвращаемые Значения</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="back-link">
+            <a class="button" href="/index_lvl1.html">← Вернуться в меню</a>
+        </div>
+        <h1>Параметры и Возвращаемые Значения</h1>
+        <p>Функции могут принимать параметры и возвращать значения. Это позволяет сделать функции гибкими и многоразовыми.</p>
+
+        <h2>Пример функции с параметрами:</h2>
+        <pre><code>def multiply(a, b):
+    return a * b
+
+print(multiply(4, 5))  # Вывод: 20</code></pre>
+
+        <h2>Функции с несколькими возвращаемыми значениями:</h2>
+        <pre><code>def divide(a, b):
+    quotient = a // b
+    remainder = a % b
+    return quotient, remainder
+
+result, rem = divide(10, 3)
+print(result, rem)  # Вывод: 3 1</code></pre>
+    </div>
+</body>
+</html>

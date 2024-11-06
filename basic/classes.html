@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Классы и объекты</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="back-link">
+            <a class="button" href="/index_lvl1.html">← Вернуться в меню</a>
+        </div>
+        <h1>Классы и объекты</h1>
+        <p>Классы — это шаблоны для создания объектов, а объекты — это экземпляры классов. Классы позволяют организовать код и создавать структуры для хранения данных и методов.</p>
+
+        <h2>Пример создания класса и объекта:</h2>
+        <pre><code>class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def bark(self):
+        print(f"{self.name} говорит: Гав-гав!")
+
+dog = Dog("Бобик", 3)
+dog.bark()  # Вывод: Бобик говорит: Гав-гав!</code></pre>
+    </div>
+</body>
+</html>
