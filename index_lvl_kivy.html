@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kivy UI Виджеты Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        code {
+            font-family: monospace;
+            background-color: #f4f4f4;
+        }
+        section {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Kivy UI Виджеты Cheat Sheet</h1>
+
+<section>
+    <h2>1. Установка</h2>
+    <pre><code>pip install kivy</code></pre>
+</section>
+
+<section>
+    <h2>2. Основные UI-виджеты в Kivy</h2>
+
+    <h3>2.1. Label (Текстовый виджет)</h3>
+    <pre><code>from kivy.uix.label import Label
+label = Label(text='Привет, Kivy!', font_size=24, color=(1, 0, 0, 1))</code></pre>
+    <ul>
+        <li><strong>text</strong>: текстовая строка</li>
+        <li><strong>font_size</strong>: размер шрифта</li>
+        <li><strong>color</strong>: цвет в формате RGBA</li>
+    </ul>
+
+    <h3>2.2. Button (Кнопка)</h3>
+    <pre><code>from kivy.uix.button import Button
+button = Button(text='Нажми меня', size_hint=(.5, .5))</code></pre>
+    <ul>
+        <li><strong>text</strong>: текст на кнопке</li>
+        <li><strong>size_hint</strong>: масштабирование относительно родительского контейнера</li>
+        <li><strong>on_press</strong>: обработка нажатия</li>
+    </ul>
+
+    <h3>2.3. TextInput (Поле ввода текста)</h3>
+    <pre><code>from kivy.uix.textinput import TextInput
+text_input = TextInput(text='Введите что-то', multiline=False)</code></pre>
+    <ul>
+        <li><strong>text</strong>: начальный текст</li>
+        <li><strong>multiline</strong>: возможность ввода нескольких строк</li>
+        <li><strong>password</strong>: скрытый ввод</li>
+    </ul>
+
+    <h3>2.4. CheckBox (Флажок)</h3>
+    <pre><code>from kivy.uix.checkbox import CheckBox
+checkbox = CheckBox(active=True)</code></pre>
+    <ul>
+        <li><strong>active</strong>: состояние (True/False)</li>
+    </ul>
+
+    <h3>2.5. Slider (Ползунок)</h3>
+    <pre><code>from kivy.uix.slider import Slider
+slider = Slider(min=0, max=100, value=50)</code></pre>
+    <ul>
+        <li><strong>min</strong>: минимальное значение</li>
+        <li><strong>max</strong>: максимальное значение</li>
+        <li><strong>value</strong>: текущее значение</li>
+    </ul>
+
+    <h3>2.6. Switch (Переключатель)</h3>
+    <pre><code>from kivy.uix.switch import Switch
+switch = Switch(active=True)</code></pre>
+    <ul>
+        <li><strong>active</strong>: включено/выключено</li>
+    </ul>
+
+    <h3>2.7. ProgressBar (Индикатор прогресса)</h3>
+    <pre><code>from kivy.uix.progressbar import ProgressBar
+progress_bar = ProgressBar(max=100, value=40)</code></pre>
+    <ul>
+        <li><strong>max</strong>: максимальное значение</li>
+        <li><strong>value</strong>: текущее значение</li>
+    </ul>
+
+    <h3>2.8. Image (Изображение)</h3>
+    <pre><code>from kivy.uix.image import Image
+image = Image(source='logo.png')</code></pre>
+    <ul>
+        <li><strong>source</strong>: путь к изображению</li>
+    </ul>
+</section>
+
+<section>
+    <h2>3. Контейнеры (Layouts)</h2>
+
+    <h3>3.1. BoxLayout (Горизонтальный и вертикальный контейнер)</h3>
+    <pre><code>from kivy.uix.boxlayout import BoxLayout
+layout = BoxLayout(orientation='vertical')</code></pre>
+    <ul>
+        <li><strong>orientation</strong>: 'horizontal' или 'vertical'</li>
+    </ul>
+
+    <h3>3.2. GridLayout (Таблица)</h3>
+    <pre><code>from kivy.uix.gridlayout import GridLayout
+layout = GridLayout(cols=2)</code></pre>
+    <ul>
+        <li><strong>cols</strong>: количество колонок</li>
+        <li><strong>rows</strong>: количество строк</li>
+    </ul>
+
+    <h3>3.3. AnchorLayout (Прикрепленный макет)</h3>
+    <pre><code>from kivy.uix.anchorlayout import AnchorLayout
+layout = AnchorLayout(anchor_x='center', anchor_y='top')</code></pre>
+    <ul>
+        <li><strong>anchor_x</strong>: выравнивание по горизонтали ('left', 'center', 'right')</li>
+        <li><strong>anchor_y</strong>: выравнивание по вертикали ('top', 'center', 'bottom')</li>
+    </ul>
+
+    <h3>3.4. FloatLayout (Свободное расположение)</h3>
+    <pre><code>from kivy.uix.floatlayout import FloatLayout
+layout = FloatLayout()</code></pre>
+    <ul>
+        <li><strong>size_hint</strong>: относительное позиционирование</li>
+        <li><strong>pos_hint</strong>: задает положение в процентах</li>
+    </ul>
+</section>
+
+<section>
+    <h2>4. Обработка событий</h2>
+    <pre><code>def on_button_click(instance):
+    print('Кнопка нажата!')
+
+button = Button(text='Кликни меня')
+button.bind(on_press=on_button_click)</code></pre>
+</section>
+
+<section>
+    <h2>5. Использование KV Language для интерфейса</h2>
+    <h3>myapp.kv:</h3>
+    <pre><code>BoxLayout:
+    orientation: 'vertical'
+    Button:
+        text: 'Кнопка 1'
+    Button:
+        text: 'Кнопка 2'</code></pre>
+
+    <h3>main.py:</h3>
+    <pre><code>from kivy.app import App
+from kivy.lang import Builder
+
+class MyApp(App):
+    def build(self):
+        return Builder.load_file('myapp.kv')
+
+MyApp().run()</code></pre>
+</section>
+
+</body>
+</html>
