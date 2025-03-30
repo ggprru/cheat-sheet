@@ -3,175 +3,389 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kivy UI Виджеты Cheat Sheet</title>
+    <title>Полная шпаргалка по виджетам Kivy</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-        }
-        h1, h2 {
             color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            background-color: #eaf2f8;
+            padding: 8px 12px;
+            border-left: 4px solid #3498db;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 20px;
         }
         pre {
-            background-color: #f4f4f4;
-            padding: 10px;
+            background-color: #f0f0f0;
+            padding: 12px;
             border-radius: 5px;
             overflow-x: auto;
-            white-space: pre-wrap;
+            border-left: 3px solid #3498db;
         }
         code {
-            font-family: monospace;
-            background-color: #f4f4f4;
+            font-family: 'Consolas', monospace;
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
         }
-        section {
-            margin-bottom: 30px;
+        .widget-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .widget-title {
+            color: #3498db;
+            margin-top: 0;
+        }
+        .property-list {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .property-item {
+            margin-bottom: 5px;
+        }
+        .note {
+            background-color: #fffde7;
+            border-left: 4px solid #ffd600;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        .tip {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        .widget-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
         }
     </style>
 </head>
 <body>
+    <h1>Полная шпаргалка по виджетам Kivy</h1>
+    <p>Исчерпывающее руководство по всем основным виджетам и их свойствам</p>
 
-<h1>Kivy UI Виджеты Cheat Sheet</h1>
+    <h2>1. Основные виджеты ввода</h2>
+    
+    <div class="widget-grid">
+        <div class="widget-card">
+            <h3 class="widget-title">Slider - Ползунок</h3>
+            <pre><code>Slider(
+    min=0,
+    max=100,
+    value=50,
+    step=1,
+    orientation='horizontal'  # или 'vertical'
+)</code></pre>
+            
+            <div class="property-list">
+                <h4>Основные свойства:</h4>
+                <div class="property-item"><strong>value</strong> - текущее значение</div>
+                <div class="property-item"><strong>min/max</strong> - диапазон значений</div>
+                <div class="property-item"><strong>step</strong> - шаг изменения</div>
+                <div class="property-item"><strong>orientation</strong> - ориентация</div>
+                
+                <h4>События:</h4>
+                <div class="property-item"><strong>on_value</strong> - при изменении значения</div>
+            </div>
+            
+            <div class="note">
+                <strong>Пример использования:</strong>
+                <pre><code>def on_slider_value(instance, value):
+    print(f"Новое значение: {value}")
 
-<section>
-    <h2>1. Установка</h2>
-    <pre><code>pip install kivy</code></pre>
-</section>
+slider = Slider(min=0, max=100)
+slider.bind(value=on_slider_value)</code></pre>
+            </div>
+        </div>
 
-<section>
-    <h2>2. Основные UI-виджеты в Kivy</h2>
+        <div class="widget-card">
+            <h3 class="widget-title">Switch - Переключатель</h3>
+            <pre><code>Switch(
+    active=False,  # Состояние (вкл/выкл)
+    size_hint=(None, None),
+    size=(60, 30)
+)</code></pre>
+            
+            <div class="property-list">
+                <h4>Основные свойства:</h4>
+                <div class="property-item"><strong>active</strong> - текущее состояние</div>
+                
+                <h4>События:</h4>
+                <div class="property-item"><strong>on_active</strong> - при изменении состояния</div>
+            </div>
+            
+            <div class="tip">
+                <strong>Совет:</strong> Для стилизации используйте KV-язык:
+                <pre><code>&lt;Switch&gt;:
+    canvas.before:
+        Color:
+            rgb: (0.2, 0.6, 0.8) if self.active else (0.7, 0.7, 0.7)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [15]</code></pre>
+            </div>
+        </div>
+    </div>
 
-    <h3>2.1. Label (Текстовый виджет)</h3>
-    <pre><code>from kivy.uix.label import Label
-label = Label(text='Привет, Kivy!', font_size=24, color=(1, 0, 0, 1))</code></pre>
-    <ul>
-        <li><strong>text</strong>: текстовая строка</li>
-        <li><strong>font_size</strong>: размер шрифта</li>
-        <li><strong>color</strong>: цвет в формате RGBA</li>
-    </ul>
+    <h2>2. Индикаторы и медиа</h2>
+    
+    <div class="widget-grid">
+        <div class="widget-card">
+            <h3 class="widget-title">ProgressBar - Индикатор прогресса</h3>
+            <pre><code>ProgressBar(
+    max=100,
+    value=25,
+    height=20
+)</code></pre>
+            
+            <div class="property-list">
+                <h4>Основные свойства:</h4>
+                <div class="property-item"><strong>value</strong> - текущее значение</div>
+                <div class="property-item"><strong>max</strong> - максимальное значение</div>
+            </div>
+            
+            <div class="note">
+                <strong>Пример обновления:</strong>
+                <pre><code># Обновление прогресса
+progress_bar.value = 75</code></pre>
+            </div>
+        </div>
 
-    <h3>2.2. Button (Кнопка)</h3>
-    <pre><code>from kivy.uix.button import Button
-button = Button(text='Нажми меня', size_hint=(.5, .5))</code></pre>
-    <ul>
-        <li><strong>text</strong>: текст на кнопке</li>
-        <li><strong>size_hint</strong>: масштабирование относительно родительского контейнера</li>
-        <li><strong>on_press</strong>: обработка нажатия</li>
-    </ul>
+        <div class="widget-card">
+            <h3 class="widget-title">Image - Изображение</h3>
+            <pre><code>Image(
+    source='image.png',
+    allow_stretch=True,
+    keep_ratio=False,
+    anim_delay=0.1  # Для GIF-анимации
+)</code></pre>
+            
+            <div class="property-list">
+                <h4>Основные свойства:</h4>
+                <div class="property-item"><strong>source</strong> - путь к изображению</div>
+                <div class="property-item"><strong>allow_stretch</strong> - растягивание</div>
+                <div class="property-item"><strong>keep_ratio</strong> - сохранение пропорций</div>
+                <div class="property-item"><strong>anim_delay</strong> - задержка анимации</div>
+                <div class="property-item"><strong>color</strong> - цветовой фильтр (RGBA)</div>
+            </div>
+            
+            <div class="tip">
+                <strong>Поддерживаемые форматы:</strong> PNG, JPG, GIF, SVG (требует дополнительных библиотек)
+            </div>
+        </div>
+    </div>
 
-    <h3>2.3. TextInput (Поле ввода текста)</h3>
-    <pre><code>from kivy.uix.textinput import TextInput
-text_input = TextInput(text='Введите что-то', multiline=False)</code></pre>
-    <ul>
-        <li><strong>text</strong>: начальный текст</li>
-        <li><strong>multiline</strong>: возможность ввода нескольких строк</li>
-        <li><strong>password</strong>: скрытый ввод</li>
-    </ul>
-
-    <h3>2.4. CheckBox (Флажок)</h3>
-    <pre><code>from kivy.uix.checkbox import CheckBox
-checkbox = CheckBox(active=True)</code></pre>
-    <ul>
-        <li><strong>active</strong>: состояние (True/False)</li>
-    </ul>
-
-    <h3>2.5. Slider (Ползунок)</h3>
-    <pre><code>from kivy.uix.slider import Slider
-slider = Slider(min=0, max=100, value=50)</code></pre>
-    <ul>
-        <li><strong>min</strong>: минимальное значение</li>
-        <li><strong>max</strong>: максимальное значение</li>
-        <li><strong>value</strong>: текущее значение</li>
-    </ul>
-
-    <h3>2.6. Switch (Переключатель)</h3>
-    <pre><code>from kivy.uix.switch import Switch
-switch = Switch(active=True)</code></pre>
-    <ul>
-        <li><strong>active</strong>: включено/выключено</li>
-    </ul>
-
-    <h3>2.7. ProgressBar (Индикатор прогресса)</h3>
-    <pre><code>from kivy.uix.progressbar import ProgressBar
-progress_bar = ProgressBar(max=100, value=40)</code></pre>
-    <ul>
-        <li><strong>max</strong>: максимальное значение</li>
-        <li><strong>value</strong>: текущее значение</li>
-    </ul>
-
-    <h3>2.8. Image (Изображение)</h3>
-    <pre><code>from kivy.uix.image import Image
-image = Image(source='logo.png')</code></pre>
-    <ul>
-        <li><strong>source</strong>: путь к изображению</li>
-    </ul>
-</section>
-
-<section>
-    <h2>3. Контейнеры (Layouts)</h2>
-
-    <h3>3.1. BoxLayout (Горизонтальный и вертикальный контейнер)</h3>
-    <pre><code>from kivy.uix.boxlayout import BoxLayout
-layout = BoxLayout(orientation='vertical')</code></pre>
-    <ul>
-        <li><strong>orientation</strong>: 'horizontal' или 'vertical'</li>
-    </ul>
-
-    <h3>3.2. GridLayout (Таблица)</h3>
-    <pre><code>from kivy.uix.gridlayout import GridLayout
-layout = GridLayout(cols=2)</code></pre>
-    <ul>
-        <li><strong>cols</strong>: количество колонок</li>
-        <li><strong>rows</strong>: количество строк</li>
-    </ul>
-
-    <h3>3.3. AnchorLayout (Прикрепленный макет)</h3>
-    <pre><code>from kivy.uix.anchorlayout import AnchorLayout
-layout = AnchorLayout(anchor_x='center', anchor_y='top')</code></pre>
-    <ul>
-        <li><strong>anchor_x</strong>: выравнивание по горизонтали ('left', 'center', 'right')</li>
-        <li><strong>anchor_y</strong>: выравнивание по вертикали ('top', 'center', 'bottom')</li>
-    </ul>
-
-    <h3>3.4. FloatLayout (Свободное расположение)</h3>
-    <pre><code>from kivy.uix.floatlayout import FloatLayout
-layout = FloatLayout()</code></pre>
-    <ul>
-        <li><strong>size_hint</strong>: относительное позиционирование</li>
-        <li><strong>pos_hint</strong>: задает положение в процентах</li>
-    </ul>
-</section>
-
-<section>
-    <h2>4. Обработка событий</h2>
-    <pre><code>def on_button_click(instance):
-    print('Кнопка нажата!')
-
-button = Button(text='Кликни меня')
-button.bind(on_press=on_button_click)</code></pre>
-</section>
-
-<section>
-    <h2>5. Использование KV Language для интерфейса</h2>
-    <h3>myapp.kv:</h3>
-    <pre><code>BoxLayout:
+    <h2>3. Элементы выбора</h2>
+    
+    <div class="widget-grid">
+        <div class="widget-card">
+            <h3 class="widget-title">CheckBox - Флажок</h3>
+            <pre><code>CheckBox(
+    active=False,
+    group='group1'  # Для радиокнопок
+    size_hint=(None, None),
+    size=30
+)</code></pre>
+            
+            <div class="property-list">
+                <h4>Основные свойства:</h4>
+                <div class="property-item"><strong>active</strong> - состояние (отмечен/не отмечен)</div>
+                <div class="property-item"><strong>group</strong> - группа для создания радиокнопок</div>
+                
+                <h4>События:</h4>
+                <div class="property-item"><strong>on_active</strong> - при изменении состояния</div>
+            </div>
+            
+            <div class="note">
+                <strong>Пример группы радиокнопок:</strong>
+                <pre><code>BoxLayout:
     orientation: 'vertical'
-    Button:
-        text: 'Кнопка 1'
-    Button:
-        text: 'Кнопка 2'</code></pre>
+    Label:
+        text: 'Выберите вариант:'
+    CheckBox:
+        group: 'options'
+        active: True
+    CheckBox:
+        group: 'options'
+    CheckBox:
+        group: 'options'</code></pre>
+            </div>
+        </div>
 
-    <h3>main.py:</h3>
-    <pre><code>from kivy.app import App
-from kivy.lang import Builder
+        <div class="widget-card">
+            <h3 class="widget-title">Spinner - Выпадающий список</h3>
+            <pre><code>Spinner(
+    text='Выберите',
+    values=('Вариант 1', 'Вариант 2', 'Вариант 3'),
+    size_hint=(None, None),
+    size=(150, 44)
+)</code></pre>
+            
+            <div class="property-list">
+                <h4>Основные свойства:</h4>
+                <div class="property-item"><strong>text</strong> - выбранный текст</div>
+                <div class="property-item"><strong>values</strong> - доступные варианты</div>
+                <div class="property-item"><strong>option_cls</strong> - класс для элементов списка</div>
+                
+                <h4>События:</h4>
+                <div class="property-item"><strong>on_text</strong> - при выборе варианта</div>
+            </div>
+            
+            <div class="tip">
+                <strong>Кастомизация:</strong> Можно изменить стиль через подкласс:
+                <pre><code>&lt;CustomSpinner@Spinner&gt;:
+    background_color: (0.9, 0.9, 0.9, 1)
+    color: (0, 0, 0, 1)
+    font_size: '16sp'</code></pre>
+            </div>
+        </div>
+    </div>
 
-class MyApp(App):
-    def build(self):
-        return Builder.load_file('myapp.kv')
+    <h2>4. Дополнительные полезные виджеты</h2>
+    
+    <div class="widget-grid">
+        <div class="widget-card">
+            <h3 class="widget-title">VideoPlayer - Видеоплеер</h3>
+            <pre><code>VideoPlayer(
+    source='video.mp4',
+    state='play',  # 'play', 'pause', 'stop'
+    options={'allow_stretch': True}
+)</code></pre>
+            
+            <div class="property-list">
+                <h4>Основные свойства:</h4>
+                <div class="property-item"><strong>source</strong> - путь к видеофайлу</div>
+                <div class="property-item"><strong>state</strong> - состояние воспроизведения</div>
+                <div class="property-item"><strong>volume</strong> - громкость (0-1)</div>
+                <div class="property-item"><strong>position</strong> - текущая позиция</div>
+                <div class="property-item"><strong>duration</strong> - продолжительность</div>
+            </div>
+            
+            <div class="note">
+                <strong>Поддерживаемые форматы:</strong> Зависит от бэкенда (обычно MP4, AVI, OGG)
+            </div>
+        </div>
 
-MyApp().run()</code></pre>
-</section>
+        <div class="widget-card">
+            <h3 class="widget-title">FileChooser - Выбор файлов</h3>
+            <pre><code>FileChooserListView(
+    path='/home/user',
+    filters=['*.png', '*.jpg'],
+    size_hint=(1, 1)
+)</code></pre>
+            
+            <div class="property-list">
+                <h4>Основные свойства:</h4>
+                <div class="property-item"><strong>path</strong> - начальный путь</div>
+                <div class="property-item"><strong>filters</strong> - фильтры файлов</div>
+                <div class="property-item"><strong>multiselect</strong> - множественный выбор</div>
+                
+                <h4>События:</h4>
+                <div class="property-item"><strong>on_selection</strong> - при выборе файла</div>
+                <div class="property-item"><strong>on_submit</strong> - при двойном клике</div>
+            </div>
+            
+            <div class="tip">
+                <strong>Варианты отображения:</strong> FileChooserListView (список) или FileChooserIconView (иконки)
+            </div>
+        </div>
+    </div>
 
+    <h2>5. Комбинированные виджеты</h2>
+    
+    <div class="widget-card">
+        <h3 class="widget-title">Popup - Всплывающее окно</h3>
+        <pre><code>Popup(
+    title='Уведомление',
+    content=Label(text='Сообщение'),
+    size_hint=(0.8, 0.8),
+    auto_dismiss=False
+)</code></pre>
+        
+        <div class="property-list">
+            <h4>Основные свойства:</h4>
+            <div class="property-item"><strong>title</strong> - заголовок окна</div>
+            <div class="property-item"><strong>content</strong> - содержимое (виджет)</div>
+            <div class="property-item"><strong>auto_dismiss</strong> - закрытие по клику вне окна</div>
+            <div class="property-item"><strong>separator_color</strong> - цвет разделителя</div>
+            
+            <h4>Методы:</h4>
+            <div class="property-item"><strong>open()</strong> - показать попап</div>
+            <div class="property-item"><strong>dismiss()</strong> - закрыть попап</div>
+        </div>
+        
+        <div class="note">
+            <strong>Пример использования:</strong>
+            <pre><code>def show_popup():
+    content = Button(text='Закрыть', size_hint=(1, 0.2))
+    popup = Popup(title='Пример', content=content)
+    content.bind(on_press=popup.dismiss)
+    popup.open()</code></pre>
+        </div>
+    </div>
+
+    <h2>6. Полезные советы и хитрости</h2>
+    
+    <div class="tip">
+        <h3>Кастомизация виджетов</h3>
+        <p>Используйте KV-язык для глубокой кастомизации:</p>
+        <pre><code>&lt;CustomButton@Button&gt;:
+    background_color: (0.2, 0.6, 0.9, 1)
+    background_normal: ''
+    background_down: 'images/btn_pressed.png'
+    canvas.before:
+        Color:
+            rgba: (0.9, 0.9, 0.9, 1) if self.state == 'normal' else (0.7, 0.7, 0.7, 1)
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [10]</code></pre>
+    </div>
+    
+    <div class="tip">
+        <h3>Анимации виджетов</h3>
+        <p>Используйте модуль Animation для плавных переходов:</p>
+        <pre><code>from kivy.animation import Animation
+
+anim = Animation(x=100, opacity=0.5, duration=0.5)
+anim += Animation(x=0, opacity=1, duration=0.5)
+anim.repeat = True
+anim.start(widget)</code></pre>
+    </div>
+    
+    <div class="note">
+        <h3>Дополнительные ресурсы</h3>
+        <ul>
+            <li><a href="https://kivy.org/doc/stable/api-kivy.uix.html" target="_blank">Официальная документация по виджетам</a></li>
+            <li><a href="https://github.com/kivy/kivy/wiki/List-of-widgets" target="_blank">Полный список виджетов</a></li>
+            <li><a href="https://kivy.org/doc/stable/examples/gen__index__examples.html" target="_blank">Примеры использования</a></li>
+            <li><a href="https://github.com/kivymd/KivyMD" target="_blank">KivyMD - Material Design виджеты</a></li>
+        </ul>
+    </div>
 </body>
 </html>
