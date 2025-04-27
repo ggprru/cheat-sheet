@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основы Python: Условные выражения</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            background-color: #e8f4fc;
+            padding: 8px 12px;
+            border-left: 4px solid #3498db;
+        }
+        
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+            color: #c7254e;
+        }
+        
+        pre {
+            background-color: #f5f5f5;
+            padding: 12px;
+            border-radius: 4px;
+            overflow-x: auto;
+            border-left: 3px solid #3498db;
+        }
+        
+        .note {
+            background-color: #fffde7;
+            padding: 12px;
+            border-left: 4px solid #ffd600;
+            margin: 15px 0;
+        }
+        
+        .warning {
+            background-color: #ffebee;
+            padding: 12px;
+            border-left: 4px solid #f44336;
+            margin: 15px 0;
+        }
+        
+        .example {
+            background-color: #e8f5e9;
+            padding: 12px;
+            border-left: 4px solid #4caf50;
+            margin: 15px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Условные выражения в Python</h1>
+    
+    <div class="note">
+        <p>Условные операторы помогают программам "принимать решения" в зависимости от условий.</p>
+    </div>
+    
+    <h2>1. Что такое условие?</h2>
+    <p>Это проверка, которая возвращает <code>True</code> (правда) или <code>False</code> (ложь).</p>
+    
+    <div class="example">
+        <h3>Пример из жизни:</h3>
+        <p>«Если на улице дождь (<code>is_rain = True</code>), то взять зонт»</p>
+    </div>
+    
+    <h2>2. Операторы сравнения</h2>
+    <table>
+        <tr><th>Оператор</th><th>Пример</th><th>Описание</th></tr>
+        <tr><td><code>==</code></td><td><code>5 == 5</code></td><td>Равно</td></tr>
+        <tr><td><code>!=</code></td><td><code>3 != 5</code></td><td>Не равно</td></tr>
+        <tr><td><code>></code></td><td><code>10 > 5</code></td><td>Больше</td></tr>
+        <tr><td><code><</code></td><td><code>3 < 7</code></td><td>Меньше</td></tr>
+        <tr><td><code>>=</code></td><td><code>age >= 18</code></td><td>Больше или равно</td></tr>
+        <tr><td><code><=</code></td><td><code>temp <= 0</code></td><td>Меньше или равно</td></tr>
+    </table>
+    
+    <h2>3. Конструкция if</h2>
+    <pre><code>if условие:
+    # Код, который выполнится если условие True
+    print("Условие верно!")</code></pre>
+    
+    <div class="example">
+        <h3>Проверка возраста:</h3>
+        <pre><code>age = 15
+if age < 18:
+    print("Ты ещё не взрослый!")</code></pre>
+    </div>
+    
+    <h2>4. Добавляем else</h2>
+    <pre><code>if условие:
+    print("Условие верно")
+else:
+    print("Условие неверно")</code></pre>
+    
+    <div class="example">
+        <h3>Проверка пароля:</h3>
+        <pre><code>password = "qwerty123"
+if password == "12345":
+    print("Пароль верный!")
+else:
+    print("Неверный пароль!")</code></pre>
+    </div>
+    
+    <h2>5. Множественные условия (elif)</h2>
+    <pre><code>if x > 0:
+    print("Положительное")
+elif x < 0:
+    print("Отрицательное")
+else:
+    print("Ноль!")</code></pre>
+    
+    <div class="warning">
+        <h3>Важно!</h3>
+        <ul>
+            <li>Отступы (4 пробела) обязательны!</li>
+            <li>После условия ставится <code>:</code></li>
+            <li><code>elif</code> = "иначе если"</li>
+        </ul>
+    </div>
+    
+    <h2>Практические задания</h2>
+    
+    <div class="example">
+        <h3>Уровень 1 (Начальный)</h3>
+        <ol>
+            <li>Дано <code>num = 10</code>. Проверьте, равно ли число 5</li>
+            <li>Создайте переменную <code>is_rain = True</code>. Если дождь, выведите "Возьми зонт!"</li>
+            <li>Проверьте, что <code>100 > 50</code> (выведите результат)</li>
+        </ol>
+        
+        <h3>Уровень 2 (Средний)</h3>
+        <ol start="4">
+            <li>Дано <code>age = 17</code>. Выведите "Ребёнок" (если < 18) или "Взрослый"</li>
+            <li>Проверьте, является ли число <code>num = 7</code> чётным (<code>% 2 == 0</code>)</li>
+            <li>Для <code>temp = -5</code> выведите "Лёд" (если ≤0) или "Вода"</li>
+        </ol>
+        
+        <h3>Уровень 3 (Продвинутый)</h3>
+        <ol start="7">
+            <li>Даны <code>login = "admin"</code> и <code>password = "123"</code>. Проверьте их корректность</li>
+            <li>Для числа <code>num = 15</code> проверьте: кратно ли оно 3 и 5 одновременно</li>
+            <li>Определите время суток (утро/день/вечер/ночь) по <code>hour = 14</code></li>
+        </ol>
+    </div>
+    
+    <h2>Пример решения</h2>
+    <p>Решение задания №9 (время суток):</p>
+    <pre><code>hour = 14
+if 6 <= hour < 12:
+    print("Утро")
+elif 12 <= hour < 18:
+    print("День")
+elif 18 <= hour < 23:
+    print("Вечер")
+else:
+    print("Ночь")</code></pre>
+    
+    <div class="note">
+        <p>На следующем уроке изучим циклы — они позволяют повторять действия много раз!</p>
+    </div>
+</body>
+</html>
