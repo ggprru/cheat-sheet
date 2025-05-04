@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Словарь терминов: Python для начинающих</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        
+        h2 {
+            background-color: #e8f4fc;
+            padding: 8px 12px;
+            border-left: 4px solid #3498db;
+            margin-top: 30px;
+        }
+        
+        .term {
+            background-color: white;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .term-name {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        
+        .term-def {
+            margin-bottom: 8px;
+        }
+        
+        .term-example {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            overflow-x: auto;
+        }
+        
+        .topic {
+            background-color: #f0f7ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 25px;
+        }
+        
+        .topic h3 {
+            margin-top: 0;
+            color: #1a5276;
+            border-bottom: 1px solid #3498db;
+            padding-bottom: 5px;
+        }
+        
+        .note {
+            background-color: #fffde7;
+            padding: 12px;
+            border-left: 4px solid #ffd600;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Словарь терминов Python</h1>
+    
+    <div class="note">
+        <p>Основные понятия для начинающих программистов. Определения и примеры по темам "Переменные" и "Условные выражения".</p>
+    </div>
+
+    <div class="topic">
+        <h3>Тема: Переменные</h3>
+        
+        <div class="term">
+            <div class="term-name">Переменная</div>
+            <div class="term-def">Именованная область памяти для хранения данных. Аналог "коробки" с именем и содержимым.</div>
+            <div class="term-example">age = 15  # Переменная age хранит число 15</div>
+        </div>
+        
+        <div class="term">
+            <div class="term-name">Тип данных</div>
+            <div class="term-def">Характеристика данных, определяющая возможные операции с ними.</div>
+            <div class="term-example">type(10)  # Возвращает &lt;class 'int'&gt;</div>
+        </div>
+        
+        <div class="term">
+            <div class="term-name">int (целое число)</div>
+            <div class="term-def">Целые числа без дробной части (положительные, отрицательные и ноль).</div>
+            <div class="term-example">count = 42  # Целое число</div>
+        </div>
+        
+        <div class="term">
+            <div class="term-name">float (дробное число)</div>
+            <div class="term-def">Числа с плавающей точкой (с дробной частью).</div>
+            <div class="term-example">pi = 3.1415  # Дробное число</div>
+        </div>
+        
+        <div class="term">
+            <div class="term-name">str (строка)</div>
+            <div class="term-def">Текстовые данные в кавычках (одинарных или двойных).</div>
+            <div class="term-example">name = "Анна"  # Строковая переменная</div>
+        </div>
+        
+        <div class="term">
+            <div class="term-name">bool (логический тип)</div>
+            <div class="term-def">Может принимать только True (истина) или False (ложь).</div>
+            <div class="term-example">is_rain = True  # Логическая переменная</div>
+        </div>
+        
+        <div class="term">
+            <div class="term-name">Оператор присваивания (=)</div>
+            <div class="term-def">Присваивает значение переменной.</div>
+            <div class="term-example">x = 10  # Присваивание значения</div>
+        </div>
+        
+        <div class="term">
+            <div class="term-name">Динамическая типизация</div>
+            <div class="term-def">Возможность изменить тип переменной при новом присваивании.</div>
+            <div class="term-example">var = 10  # Сначала int
+                <br>
+var = "текст"  # Теперь str</div>
+        </div>
+    </div>
+
+    <div class="topic">
+        <h3>Тема: Условные выражения</h3>
+        
+        <div class="term">
+            <div class="term-name">Условный оператор (if)</div>
+            <div class="term-def">Выполняет блок кода, если условие истинно.</div>
+            <div class="term-example">if age >= 18:<br>
+    <span style="margin-left: 28px;">print("Доступ разрешён")</span></div>
+        </div>
+        
+        <div class="term">
+            <div class="term-name">Оператор else</div>
+            <div class="term-def">Выполняет блок кода, если условие в if ложно.</div>
+            <div class="term-example">if is_rain:<br>
+                <span style="margin-left: 28px;">print("Возьми зонт")</span><br>
+else: <br>
+<span style="margin-left: 28px;">print("Зонт не нужен")</span></div>
+        </div>
+        
+        <div class="term">
+            <div class="term-name">Оператор elif</div>
+            <div class="term-def">Проверяет дополнительное условие, если предыдущие условия ложны.</div>
+            <div class="term-example">if score >= 90:<br>
+                <span style="margin-left: 28px;">grade = "A"</span><br>
+elif score >= 80:<br>
+<span style="margin-left: 28px;">grade = "B"</span></div>
+        </div>
+        
+        <div class="term">
+            <div class="term-name">Операторы сравнения</div>
+            <div class="term-def">Сравнивают два значения: == (равно), != (не равно), >, <, >=, <=.</div>
+            <div class="term-example">10 > 5  # Возвращает True</div>
+        </div>
+        
+        <div class="term">
+            <div class="term-name">Логические операторы</div>
+            <div class="term-def">Комбинируют условия: and (и), or (или), not (не).</div>
+            <div class="term-example">if age >= 18 and has_license:
+                <br>
+                <span style="margin-left: 28px;">print("Можно водить")</span></div>
+        </div>
+        
+        <div class="term">
+            <div class="term-name">Вложенные условия</div>
+            <div class="term-def">Условия внутри других условий.</div>
+            <div class="term-example">if x > 0: <br>
+                <span style="margin-left: 28px;">if y > 0:</span> <br>
+                <span style="margin-left: 56px;">print("Первая четверть")</span></div>
+        </div>
+        
+        <div class="term">
+            <div class="term-name">Тернарный оператор</div>
+            <div class="term-def">Краткая форма записи if-else в одной строке.</div>
+            <div class="term-example">status = "Взрослый" if age >= 18 else "Ребёнок"</div>
+        </div>
+        
+        <div class="term">
+            <div class="term-name">Булево выражение</div>
+            <div class="term-def">Выражение, возвращающее True или False.</div>
+            <div class="term-example">is_even = (num % 2 == 0)  # True если число чётное</div>
+        </div>
+    </div>
+
+   
+</body>
+</html>
