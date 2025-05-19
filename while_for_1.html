@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 4: Циклы в Python</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            background-color: #e8f4fc;
+            padding: 8px 12px;
+            border-left: 4px solid #3498db;
+            margin-top: 30px;
+        }
+        
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+            color: #c7254e;
+        }
+        
+        pre {
+            background-color: #f5f5f5;
+            padding: 12px;
+            border-radius: 4px;
+            overflow-x: auto;
+            border-left: 3px solid #3498db;
+        }
+        
+        .note {
+            background-color: #fffde7;
+            padding: 12px;
+            border-left: 4px solid #ffd600;
+            margin: 15px 0;
+        }
+        
+        .warning {
+            background-color: #ffebee;
+            padding: 12px;
+            border-left: 4px solid #f44336;
+            margin: 15px 0;
+        }
+        
+        .example {
+            background-color: #e8f5e9;
+            padding: 12px;
+            border-left: 4px solid #4caf50;
+            margin: 15px 0;
+        }
+        
+        .task-list {
+            counter-reset: task-counter;
+        }
+        
+        .task-list li {
+            counter-increment: task-counter;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            list-style-type: none;
+        }
+        
+        .task-list li:before {
+            content: counter(task-counter) ".";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .level {
+            background-color: #f0f7ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .level h3 {
+            margin-top: 0;
+            color: #1a5276;
+        }
+        
+        .level-1 { background-color: #f0f7ff; }
+        .level-2 { background-color: #e6f7ff; }
+        .level-3 { background-color: #d6f0ff; }
+        
+        .visual {
+            text-align: center;
+            margin: 15px 0;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Урок 4: Циклы в Python</h1>
+    
+    <div class="note">
+        <p>Циклы позволяют повторять блок кода многократно. В Python есть два основных типа циклов: <code>for</code> и <code>while</code>.</p>
+    </div>
+
+    <h2>1. Цикл for</h2>
+    
+    <div class="visual">
+        <img src="" alt="Схема цикла for" width="300">
+        <p><em>Схема работы цикла for</em></p>
+    </div>
+    
+    <p>Используется для перебора элементов последовательности:</p>
+    
+    <pre><code># Перебор списка
+fruits = ['яблоко', 'банан', 'апельсин']
+for fruit in fruits:
+    print(fruit)
+
+# Функция range()
+for i in range(5):      # 0, 1, 2, 3, 4
+    print(i)
+
+for i in range(1, 6):   # 1, 2, 3, 4, 5
+    print(i)
+
+for i in range(1, 10, 2):  # 1, 3, 5, 7, 9
+    print(i)</code></pre>
+    
+    <div class="warning">
+        <p>Важно! В Python цикл for - это <strong>for-each</strong>, он перебирает элементы, а не работает с индексами как в некоторых других языках.</p>
+    </div>
+
+    <h2>2. Цикл while</h2>
+    
+    <div class="visual">
+        <img src="https://i.imgur.com/7W7Wz3K.png" alt="Схема цикла while" width="300">
+        <p><em>Схема работы цикла while</em></p>
+    </div>
+    
+    <p>Выполняется, пока условие истинно:</p>
+    
+    <pre><code># Простой пример
+count = 0
+while count < 5:
+    print(count)
+    count += 1
+
+# Бесконечный цикл с break
+while True:
+    answer = input("Введите 'выход' для завершения: ")
+    if answer.lower() == 'выход':
+        break
+    print("Вы ввели:", answer)</code></pre>
+
+    <h2>3. Управление циклами</h2>
+    
+    <table>
+        <tr><th>Команда</th><th>Описание</th><th>Пример</th></tr>
+        <tr><td><code>break</code></td><td>Полностью прерывает цикл</td><td><code>while True: break</code></td></tr>
+        <tr><td><code>continue</code></td><td>Переходит к следующей итерации</td><td><code>for i in range(5): if i == 2: continue</code></td></tr>
+        <tr><td><code>else</code></td><td>Выполняется, если цикл завершился без break</td><td><code>for i in range(3): ... else: print("Готово")</code></td></tr>
+    </table>
+
+    <h2>Практические задания</h2>
+    
+    <div class="level level-1">
+        <h3>Уровень 1: Базовые циклы (15 заданий)</h3>
+        <ol class="task-list">
+            <li>Выведите числа от 1 до 10 с помощью цикла for</li>
+            <li>Выведите все чётные числа от 2 до 20</li>
+            <li>Выведите квадраты чисел от 1 до 5</li>
+            <li>Выведите элементы списка <code>colors = ['red', 'green', 'blue']</code></li>
+            <li>Подсчитайте сумму чисел от 1 до 100</li>
+            <li>Выведите таблицу умножения на 5 (от 5×1 до 5×10)</li>
+            <li>Выведите числа от 10 до 1 в обратном порядке</li>
+            <li>С помощью while выведите числа от 0 до 4</li>
+            <li>Создайте бесконечный цикл с выходом по вводу "стоп"</li>
+            <li>Подсчитайте количество букв 'а' в строке "абракадабра"</li>
+            <li>Выведите все делители числа 36</li>
+            <li>Создайте список квадратов чисел от 1 до 10</li>
+            <li>Выведите символы строки "Python" по одному</li>
+            <li>Подсчитайте произведение чисел от 1 до 5</li>
+            <li>Выведите числа от 1 до 10, пропуская 3 и 7</li>
+        </ol>
+    </div>
+
+    <div class="level level-2">
+        <h3>Уровень 2: Комбинированные задачи (20 заданий)</h3>
+        <ol class="task-list" start="16">
+            <li>Определите, является ли число простым</li>
+            <li>Выведите первые 10 чисел Фибоначчи</li>
+            <li>Подсчитайте факториал числа 5</li>
+            <li>Найдите сумму цифр трёхзначного числа</li>
+            <li>Переверните строку "программирование"</li>
+            <li>Найдите наибольший элемент в списке чисел</li>
+            <li>Подсчитайте количество гласных в предложении</li>
+            <li>Сгенерируйте список случайных чисел (используйте random.randint)</li>
+            <li>Найдите все общие элементы двух списков</li>
+            <li>Создайте "лесенку" из символов '#':
+                #
+                ##
+                ###
+                ####</li>
+            <li>Подсчитайте среднее значение в списке чисел</li>
+            <li>Преобразуйте список строк в список их длин</li>
+            <li>Найдите все пары чисел в списке, дающие в сумме 10</li>
+            <li>Создайте список всех делителей числа, кроме 1 и самого числа</li>
+            <li>Определите, есть ли в списке дубликаты</li>
+            <li>Сгенерируйте список всех простых чисел до 50</li>
+            <li>Напишите программу "Угадай число" с подсказками "больше/меньше"</li>
+            <li>Подсчитайте количество слов в строке</li>
+            <li>Создайте список чисел, которые делятся на 3 или 5 до 100</li>
+            <li>Напишите программу, которая рисует ромб из звездочек</li>
+        </ol>
+    </div>
+
+    <div class="level level-3">
+        <h3>Уровень 3: Продвинутые задачи (15 заданий)</h3>
+        <ol class="task-list" start="36">
+            <li>Реализуйте алгоритм "Решето Эратосфена" для поиска простых чисел</li>
+            <li>Напишите программу для разложения числа на простые множители</li>
+            <li>Создайте треугольник Паскаля заданной высоты</li>
+            <li>Реализуйте бинарный поиск в отсортированном списке</li>
+            <li>Напишите программу для сортировки списка пузырьком</li>
+            <li>Подсчитайте количество каждой буквы в тексте (частотный анализ)</li>
+            <li>Реализуйте шифр Цезаря со сдвигом на 3</li>
+            <li>Напишите программу для перевода числа в римскую систему</li>
+            <li>Создайте список всех совершенных чисел до 10000</li>
+            <li>Реализуйте алгоритм проверки числа на палиндром</li>
+            <li>Напишите программу для генерации всех подмножеств множества</li>
+            <li>Реализуйте алгоритм вычисления НОД (наибольшего общего делителя)</li>
+            <li>Создайте программу для решения квадратного уравнения</li>
+            <li>Напишите генератор паролей с заданной длиной и сложностью</li>
+            <li>Реализуйте симулятор броска монеты с подсчётом статистики</li>
+        </ol>
+    </div>
+
+    <div class="example">
+        <h3>Пример решения задачи 16 (проверка на простое число)</h3>
+        <pre><code>num = 17
+is_prime = True
+
+if num > 1:
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            is_prime = False
+            break
+
+print(f"Число {num} {'простое' if is_prime else 'составное'}")</code></pre>
+    </div>
+
+    <div class="note">
+        <p>Для решения сложных задач может потребоваться изучение следующих тем: функции, рекурсия, работа с файлами. Рекомендуется разбирать по 5-10 заданий за урок.</p>
+    </div>
+</body>
+</html>
