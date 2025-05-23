@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 3: Списки в Python</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            background-color: #e8f4fc;
+            padding: 8px 12px;
+            border-left: 4px solid #3498db;
+            margin-top: 30px;
+        }
+        
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+            color: #c7254e;
+        }
+        
+        pre {
+            background-color: #f5f5f5;
+            padding: 12px;
+            border-radius: 4px;
+            overflow-x: auto;
+            border-left: 3px solid #3498db;
+        }
+        
+        .note {
+            background-color: #fffde7;
+            padding: 12px;
+            border-left: 4px solid #ffd600;
+            margin: 15px 0;
+        }
+        
+        .warning {
+            background-color: #ffebee;
+            padding: 12px;
+            border-left: 4px solid #f44336;
+            margin: 15px 0;
+        }
+        
+        .example {
+            background-color: #e8f5e9;
+            padding: 12px;
+            border-left: 4px solid #4caf50;
+            margin: 15px 0;
+        }
+        
+        .task-list {
+            counter-reset: task-counter;
+        }
+        
+        .task-list li {
+            counter-increment: task-counter;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            list-style-type: none;
+        }
+        
+        .task-list li:before {
+            content: counter(task-counter) ".";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .level {
+            background-color: #f0f7ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .level h3 {
+            margin-top: 0;
+            color: #1a5276;
+        }
+        
+        .level-1 { background-color: #f0f7ff; }
+        .level-2 { background-color: #e6f7ff; }
+        .level-3 { background-color: #d6f0ff; }
+        
+        .visual {
+            text-align: center;
+            margin: 15px 0;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .list-methods {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #6c757d;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Урок 3: Списки в Python</h1>
+    
+    <div class="note">
+        <p>Списки — упорядоченные изменяемые коллекции элементов разных типов. Один из самых важных типов данных в Python.</p>
+    </div>
+
+    <h2>1. Создание и основы работы</h2>
+    
+    <div class="visual">
+        <img src="https://i.imgur.com/LWcU7EX.png" alt="Визуализация списка в Python" width="500">
+        <p><em>Список — как последовательность пронумерованных ячеек памяти</em></p>
+    </div>
+    
+    <pre><code># Создание списков
+numbers = [1, 2, 3, 4, 5]          # Список чисел
+fruits = ['яблоко', 'банан', 'апельсин']  # Список строк
+mixed = [1, 'текст', 3.14, True]    # Смешанный список
+empty = []                          # Пустой список
+
+# Доступ к элементам (индексация с 0!)
+print(fruits[0])    # 'яблоко'
+print(fruits[-1])   # 'апельсин' (отрицательные индексы с конца)
+
+# Изменение элементов
+fruits[1] = 'груша'
+print(fruits)       # ['яблоко', 'груша', 'апельсин']</code></pre>
+    
+    <div class="warning">
+        <p>Важно! Индексация начинается с 0. Попытка доступа к несуществующему индексу вызовет ошибку IndexError.</p>
+    </div>
+
+    <h2>2. Основные операции</h2>
+    
+    <div class="list-methods">
+        <h3>Основные методы списков</h3>
+        <table>
+            <tr><th>Метод</th><th>Описание</th><th>Пример</th></tr>
+            <tr><td>append(x)</td><td>Добавляет элемент в конец</td><td>fruits.append('виноград')</td></tr>
+            <tr><td>insert(i, x)</td><td>Вставляет на позицию i</td><td>fruits.insert(1, 'лимон')</td></tr>
+            <tr><td>remove(x)</td><td>Удаляет первый элемент x</td><td>fruits.remove('банан')</td></tr>
+            <tr><td>pop([i])</td><td>Удаляет и возвращает элемент</td><td>fruits.pop(2)</td></tr>
+            <tr><td>index(x)</td><td>Возвращает индекс элемента</td><td>fruits.index('яблоко')</td></tr>
+            <tr><td>count(x)</td><td>Считает количество x</td><td>fruits.count('яблоко')</td></tr>
+            <tr><td>sort()</td><td>Сортирует список</td><td>fruits.sort()</td></tr>
+            <tr><td>reverse()</td><td>Разворачивает список</td><td>fruits.reverse()</td></tr>
+            <tr><td>copy()</td><td>Поверхностная копия</td><td>new = fruits.copy()</td></tr>
+            <tr><td>clear()</td><td>Очищает список</td><td>fruits.clear()</td></tr>
+        </table>
+    </div>
+
+    <h2>3. Срезы (slice)</h2>
+    
+    <div class="visual">
+        <img src="https://i.imgur.com/0f4qW7M.png" alt="Визуализация срезов" width="500">
+        <p><em>Синтаксис срезов: list[начало:конец:шаг]</em></p>
+    </div>
+    
+    <pre><code>numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+print(numbers[2:5])    # [2, 3, 4] (с 2 до 5 не включая)
+print(numbers[:3])     # [0, 1, 2] (с начала до 3)
+print(numbers[5:])     # [5, 6, 7, 8, 9] (с 5 до конца)
+print(numbers[::2])    # [0, 2, 4, 6, 8] (каждый второй)
+print(numbers[::-1])   # [9, 8, 7, 6, 5, 4, 3, 2, 1, 0] (разворот)</code></pre>
+
+    <h2>Практические задания</h2>
+    
+    <div class="level level-1">
+        <h3>Уровень 1: Базовые операции (15 заданий)</h3>
+        <ol class="task-list">
+            <li>Создайте список чисел от 1 до 10</li>
+            <li>Выведите 3-й элемент списка [10, 20, 30, 40, 50]</li>
+            <li>Замените последний элемент списка на 100</li>
+            <li>Добавьте элемент 'новый' в конец списка</li>
+            <li>Удалите второй элемент из списка</li>
+            <li>Проверьте, есть ли число 5 в списке [1, 3, 5, 7, 9]</li>
+            <li>Соедините два списка в один</li>
+            <li>Посчитайте количество элементов в списке</li>
+            <li>Выведите список в обратном порядке</li>
+            <li>Создайте список из 5 одинаковых элементов</li>
+            <li>Найдите сумму элементов списка чисел</li>
+            <li>Найдите минимальный элемент в списке</li>
+            <li>Создайте копию списка (не ссылку!)</li>
+            <li>Удалите все элементы из списка</li>
+            <li>Создайте список квадратов чисел от 1 до 5</li>
+        </ol>
+    </div>
+
+    <div class="level level-2">
+        <h3>Уровень 2: Работа с методами (20 заданий)</h3>
+        <ol class="task-list" start="16">
+            <li>Отсортируйте список чисел по возрастанию</li>
+            <li>Отсортируйте список строк по алфавиту</li>
+            <li>Удалите дубликаты из списка</li>
+            <li>Разделите список на два: четные и нечетные индексы</li>
+            <li>Найдите все элементы, которые встречаются более 1 раза</li>
+            <li>Создайте список из общих элементов двух списков</li>
+            <li>Разверните список без использования reverse()</li>
+            <li>Посчитайте количество цифр в списке смешанных типов</li>
+            <li>Преобразуйте список строк в список их длин</li>
+            <li>Создайте список только из чисел (фильтрация)</li>
+            <li>Разделите список на подсписки заданного размера</li>
+            <li>Найдите второй по величине элемент в списке</li>
+            <li>Проверьте, является ли список палиндромом</li>
+            <li>Создайте список всех делителей числа N</li>
+            <li>Перемешайте элементы списка случайным образом</li>
+            <li>Замените все отрицательные числа на 0</li>
+            <li>Создайте список из первых букв каждого слова в списке строк</li>
+            <li>Найдите самый длинный элемент в списке строк</li>
+            <li>Создайте список чисел Фибоначчи до N-го элемента</li>
+            <li>Преобразуйте список чисел в строку (например, [1,2,3] → "1-2-3")</li>
+        </ol>
+    </div>
+
+    <div class="level level-3">
+        <h3>Уровень 3: Сложные задачи (15 заданий)</h3>
+        <ol class="task-list" start="36">
+            <li>Реализуйте сортировку пузырьком</li>
+            <li>Напишите функцию для поиска всех простых чисел до N (решето Эратосфена)</li>
+            <li>Реализуйте алгоритм бинарного поиска в отсортированном списке</li>
+            <li>Создайте список всех перестановок элементов исходного списка</li>
+            <li>Реализуйте алгоритм сжатия списка (RLE)</li>
+            <li>Напишите функцию для группировки слов по длине</li>
+            <li>Реализуйте алгоритм поиска наибольшей возрастающей подпоследовательности</li>
+            <li>Реализуйте алгоритм поиска отсутствующего числа в списке</li>
+        </ol>
+    </div>
+
+    <div class="example">
+        <h3>Пример решения задачи 36 (сортировка пузырьком)</h3>
+        <pre><code>def bubble_sort(lst):
+    n = len(lst)
+    for i in range(n-1):
+        for j in range(n-i-1):
+            if lst[j] > lst[j+1]:
+                lst[j], lst[j+1] = lst[j+1], lst[j]
+    return lst
+
+numbers = [5, 3, 8, 4, 2]
+print(bubble_sort(numbers))  # [2, 3, 4, 5, 8]</code></pre>
+    </div>
+
+
+</body>
+</html>
