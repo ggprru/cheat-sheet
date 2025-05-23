@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 5: Функции в Python</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            background-color: #e8f4fc;
+            padding: 8px 12px;
+            border-left: 4px solid #3498db;
+            margin-top: 30px;
+        }
+        
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+            color: #c7254e;
+        }
+        
+        pre {
+            background-color: #f5f5f5;
+            padding: 12px;
+            border-radius: 4px;
+            overflow-x: auto;
+            border-left: 3px solid #3498db;
+        }
+        
+        .note {
+            background-color: #fffde7;
+            padding: 12px;
+            border-left: 4px solid #ffd600;
+            margin: 15px 0;
+        }
+        
+        .warning {
+            background-color: #ffebee;
+            padding: 12px;
+            border-left: 4px solid #f44336;
+            margin: 15px 0;
+        }
+        
+        .example {
+            background-color: #e8f5e9;
+            padding: 12px;
+            border-left: 4px solid #4caf50;
+            margin: 15px 0;
+        }
+        
+        .task-list {
+            counter-reset: task-counter;
+        }
+        
+        .task-list li {
+            counter-increment: task-counter;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            list-style-type: none;
+        }
+        
+        .task-list li:before {
+            content: counter(task-counter) ".";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .level {
+            background-color: #f0f7ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .level h3 {
+            margin-top: 0;
+            color: #1a5276;
+        }
+        
+        .level-1 { background-color: #f0f7ff; }
+        .level-2 { background-color: #e6f7ff; }
+        .level-3 { background-color: #d6f0ff; }
+        
+        .visual {
+            text-align: center;
+            margin: 15px 0;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .function-anatomy {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #6c757d;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Урок 5: Функции в Python</h1>
+    
+    <div class="note">
+        <p>Функции позволяют организовывать код в логические блоки, которые можно многократно использовать.</p>
+    </div>
+
+    <h2>1. Создание функций</h2>
+    
+    <div class="function-anatomy">
+        <h3>Анатомия функции</h3>
+        <pre><code>def имя_функции(параметры):
+    """Документация (docstring)"""
+    тело_функции
+    return результат  # Необязательно</code></pre>
+    </div>
+    
+    <div class="example">
+        <h3>Примеры функций</h3>
+        <pre><code># 1. Простая функция
+def greet():
+    print("Привет, мир!")
+
+# 2. Функция с параметрами
+def greet_name(name):
+    print(f"Привет, {name}!")
+
+# 3. Функция с возвращаемым значением
+def square(x):
+    return x * x
+
+# 4. Функция с документацией
+def add(a, b):
+    """Возвращает сумму двух чисел."""
+    return a + b</code></pre>
+    </div>
+    
+    <div class="warning">
+        <p>Важно! Функция не выполняется до момента её вызова. <br> После <code>def</code> должно быть 4 пробела или 1 таб.</p>
+    </div>
+
+    <h2>2. Параметры и аргументы</h2>
+    
+    <table>
+        <tr><th>Тип</th><th>Описание</th><th>Пример</th></tr>
+        <tr><td>Позиционные</td><td>Передаются по порядку</td><td><code>func(1, 2)</code></td></tr>
+        <tr><td>Именованные</td><td>Передаются по имени</td><td><code>func(b=2, a=1)</code></td></tr>
+        <tr><td>По умолчанию</td><td>Имеют значение, если не указаны</td><td><code>def greet(name="гость")</code></td></tr>
+        <tr><td>*args</td><td>Произвольное число позиционных</td><td><code>def sum(*numbers)</code></td></tr>
+        <tr><td>**kwargs</td><td>Произвольное число именованных</td><td><code>def person(**data)</code></td></tr>
+    </table>
+
+    <h2>3. Область видимости</h2>
+    
+
+    
+    <pre><code>x = 10  # Глобальная переменная
+
+def func():
+    y = 5  # Локальная переменная
+    print(x + y)  # Можно читать глобальные
+    
+func()
+print(y)  # Ошибка! y не существует вне функции</code></pre>
+    
+    <div class="warning">
+        <p>Используйте <code>global</code> для изменения глобальных переменных внутри функции (но лучше избегать)!</p>
+    </div>
+
+    
+    <h2>Практические задания</h2>
+    
+    <div class="level level-1">
+        <h3>Уровень 1: Базовые функции (15 заданий)</h3>
+        <ol class="task-list">
+            <li>Напишите функцию, которая печатает "Привет, Python!"</li>
+            <li>Создайте функцию для вычисления площади прямоугольника</li>
+            <li>Напишите функцию, которая проверяет чётность числа</li>
+            <li>Создайте функцию для конвертации градусов Цельсия в Фаренгейты</li>
+            <li>Напишите функцию, которая возвращает максимальное из двух чисел</li>
+            <li>Создайте функцию для подсчёта суммы чисел от 1 до N</li>
+            <li>Напишите функцию, которая переворачивает строку</li>
+            <li>Создайте функцию для проверки палиндрома (слова-перевёртыша)</li>
+            <li>Напишите функцию, которая возвращает факториал числа</li>
+            <li>Создайте функцию для подсчёта количества гласных в строке</li>
+            <li>Напишите функцию, которая генерирует список квадратов чисел от 1 до N</li>
+            <li>Создайте функцию для проверки простого числа</li>
+            <li>Напишите функцию, которая возвращает абсолютное значение числа</li>
+            <li>Создайте функцию для вычисления НОД двух чисел</li>
+            <li>Напишите функцию, которая печатает все делители числа</li>
+        </ol>
+    </div>
+
+    <div class="level level-2">
+        <h3>Уровень 2: Продвинутые функции (15 заданий)</h3>
+        <ol class="task-list" start="16">
+            <li>Напишите функцию для сортировки списка чисел (без sort())</li>
+            <li>Создайте функцию, которая генерирует список простых чисел до N</li>
+            <li>Напишите функцию для вычисления чисел Фибоначчи до N-го</li>
+            <li>Создайте функцию для подсчёта частоты символов в строке</li>
+            <li>Напишите функцию, которая преобразует секунды в часы:минуты:секунды</li>
+            <li>Создайте функцию для проверки "счастливого билета" (сумма первых 3 цифр равна последним 3)</li>
+            <li>Напишите функцию, которая шифрует строку (шифр Цезаря)</li>
+            <li>Создайте функцию для вычисления квадратного уравнения</li>
+            <li>Создайте функцию для проверки корректности email (наличие @ и точки после)</li>
+            <li>Напишите функцию, которая возвращает список всех файлов с указанным расширением в директории</li>
+            <li>Создайте функцию для вычисления суммы цифр числа</li>
+            <li>Напишите функцию, которая генерирует случайный пароль заданной длины</li>
+            <li>Создайте функцию для преобразования числа в римскую систему</li>
+            <li>Создайте функцию для нахождения второго по величине числа в списке</li>
+            <li>Создайте функцию для генерации треугольника Паскаля</li>
+        </ol>
+    </div>
+
+    <div class="level level-3">
+        <h3>Уровень 3: Сложные задачи (6 заданий)</h3>
+        <ol class="task-list" start="36">
+            <li>Реализуйте функцию с переменным числом аргументов для подсчёта суммы</li>
+            <li>Напишите функцию-генератор для последовательности квадратов чисел</li>
+            <li>Создайте рекурсивную функцию для вычисления чисел Фибоначчи</li>
+            <li>Создайте функцию-валидатор пароля (длина, символы и т.д.)</li>
+            <li>Напишите функцию для конвертации между системами счисления (2-36)</li>
+            <li>Создайте функцию-парсер математических выражений (например, "2+3*4")</li>
+        </ol>
+    </div>
+
+    <div class="example">
+        <h3>Пример решения задачи 16 (сортировка списка)</h3>
+        <pre><code>def bubble_sort(lst):
+    """Сортировка пузырьком."""
+    n = len(lst)
+    for i in range(n-1):
+        for j in range(n-i-1):
+            if lst[j] > lst[j+1]:
+                lst[j], lst[j+1] = lst[j+1], lst[j]
+    return lst
+
+numbers = [5, 2, 8, 1, 9]
+print(bubble_sort(numbers))  # [1, 2, 5, 8, 9]</code></pre>
+    </div>
+
+
+</body>
+</html>
