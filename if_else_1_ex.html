@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дополнительные задания: Условия в Python</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            background-color: #e8f4fc;
+            padding: 8px 12px;
+            border-left: 4px solid #3498db;
+            margin-top: 30px;
+        }
+        
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+            color: #c7254e;
+        }
+        
+        pre {
+            background-color: #f5f5f5;
+            padding: 12px;
+            border-radius: 4px;
+            overflow-x: auto;
+            border-left: 3px solid #3498db;
+        }
+        
+        .note {
+            background-color: #fffde7;
+            padding: 12px;
+            border-left: 4px solid #ffd600;
+            margin: 15px 0;
+        }
+        
+        .warning {
+            background-color: #ffebee;
+            padding: 12px;
+            border-left: 4px solid #f44336;
+            margin: 15px 0;
+        }
+        
+        .example {
+            background-color: #e8f5e9;
+            padding: 12px;
+            border-left: 4px solid #4caf50;
+            margin: 15px 0;
+        }
+        
+        .task-list {
+            counter-reset: task-counter;
+        }
+        
+        .task-list li {
+            counter-increment: task-counter;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            list-style-type: none;
+        }
+        
+        .task-list li:before {
+            content: counter(task-counter) ".";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .level {
+            background-color: #f0f7ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .level h3 {
+            margin-top: 0;
+            color: #1a5276;
+        }
+        
+        .level-1 { background-color: #f0f7ff; }
+        .level-2 { background-color: #e6f7ff; }
+        .level-3 { background-color: #d6f0ff; }
+        
+        .solution {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #6c757d;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Дополнительные задания: Условные выражения</h1>
+    
+    <div class="note">
+        <p>50 задач для отработки условий <code>if/elif/else</code> с постепенным увеличением сложности.</p>
+    </div>
+
+    <div class="level level-1">
+        <h3>Уровень 1: Базовые условия (15 заданий)</h3>
+        <ol class="task-list">
+            <li>Дано число <code>num = 10</code>. Проверьте, положительное ли оно</li>
+            <li>Создайте переменную <code>is_rain = True</code>. Если дождь, выведите "Возьми зонт"</li>
+            <li>Проверьте, что <code>15 > 20</code> (выведите результат)</li>
+            <li>Дано <code>age = 17</code>. Выведите "Подросток" если возраст 13-19 лет</li>
+            <li>Для <code>temp = -3</code> выведите "Минус" если температура < 0</li>
+            <li>Проверьте, является ли <code>num = 4</code> чётным числом</li>
+            <li>Дано <code>password = "qwerty"</code>. Проверьте, равен ли он "12345"</li>
+            <li>Для <code>score = 75</code> выведите "Сдал" если score ≥ 60</li>
+            <li>Создайте <code>is_weekend = False</code>. Если не выходной, выведите "Иди в школу"</li>
+            <li>Проверьте, что строка <code>s = "Python"</code> не равна "python" (учтите регистр)</li>
+            <li>Дано <code>x = 5</code>, <code>y = 5</code>. Проверьте, что x равен y</li>
+            <li>Для <code>year = 2023</code> проверьте, что он не равен 2020</li>
+            <li>Создайте <code>is_day = True</code>. Если день, выведите "Солнце светит"</li>
+            <li>Проверьте, что длина строки <code>word = "Hello"</code> больше 3</li>
+            <li>Дано <code>a = 7</code>, <code>b = 10</code>. Проверьте, что a не равно b</li>
+        </ol>
+    </div>
+
+    <div class="level level-2">
+        <h3>Уровень 2: Комбинированные условия (20 заданий)</h3>
+        <ol class="task-list" start="16">
+            <li>Дано <code>age = 20</code>. Выведите "Ребёнок" (<12), "Подросток" (12-17) или "Взрослый" (18+)</li>
+            <li>Для <code>temp = 25</code> выведите "Холодно" (<10), "Тепло" (10-20) или "Жарко" (>20)</li>
+            <li>Проверьте, является ли <code>num = 15</code> чётным и больше 10 одновременно</li>
+            <li>Даны <code>login = "admin"</code>, <code>password = "qwerty"</code>. Проверьте их корректность</li>
+            <li>Для <code>score = 87</code> выведите оценку: A (≥90), B (≥80), C (≥70), D (<70)</li>
+            <li>Создайте <code>time = 14</code>. Определите "Утро" (6-11), "День" (12-17), "Вечер" (18-23), "Ночь"</li>
+            <li>Проверьте, является ли <code>year = 2024</code> високосным годом</li>
+            <li>Дано <code>num = 30</code>. Проверьте, кратно ли оно 5 или 10</li>
+            <li>Для <code>a = 10</code>, <code>b = 20</code>, <code>c = 15</code> найдите максимальное число</li>
+            <li>Создайте <code>word = "топот"</code>. Проверьте, является ли оно палиндромом</li>
+            <li>Даны 3 числа. Определите, все ли они чётные</li>
+            <li>Для <code>price = 100</code>, <code>discount = 30</code> вычислите итоговую цену (если скидка >20%, иначе цена без скидки)</li>
+            <li>Проверьте, является ли <code>num = 36</code> квадратом целого числа</li>
+            <li>Дано <code>s = "Python"</code>. Проверьте, начинается ли оно с "Py" и заканчивается на "on"</li>
+            <li>Для <code>a = 3</code>, <code>b = 4</code>, <code>c = 5</code> проверьте, может ли это быть треугольник</li>
+            <li>Создайте <code>age = 16</code>, <code>has_parents = True</code>. Можно ли смотреть фильм 18+ (нет, но если есть родители - можно)</li>
+            <li>Проверьте, является ли <code>num = 999</code> трёхзначным числом</li>
+            <li>Даны <code>x = 5</code>, <code>y = 10</code>. Какое число ближе к 8?</li>
+            <li>Для <code>day = "сб"</code> определите, рабочий это день (пн-пт) или выходной</li>
+            <li>Создайте <code>a = 15</code>, <code>b = 10</code>. Поменяйте значения если a > b</li>
+        </ol>
+    </div>
+
+    <div class="level level-3">
+        <h3>Уровень 3: Сложные условия (15 заданий)</h3>
+        <ol class="task-list" start="36">
+            <li>Для <code>year = 2023</code>, <code>month = 2</code> определите количество дней в месяце (учтите високосность)</li>
+            <li>Даны 3 числа. Определите, могут ли они быть сторонами прямоугольного треугольника</li>
+            <li>Создайте <code>time = 3665</code>. Переведите в часы:минуты:секунды (формат HH:MM:SS)</li>
+            <li>Проверьте, является ли <code>ip = "192.168.1.1"</code> корректным IPv4 адресом (4 числа 0-255 через точки)</li>
+            <li>Для <code>date = "31.02.2023"</code> проверьте, является ли дата корректной (учитывая месяцы и високосные годы)</li>
+            <li>Даны <code>a = 5</code>, <code>b = 3</code>, <code>c = 8</code>. Упорядочьте их по возрастанию</li>
+            <li>Создайте <code>color = "#FF00FF"</code>. Определите, является ли он красным (первые 2 символа FF) или синим (последние 2 FF)</li>
+            <li>Проверьте, можно ли из букв слова <code>word = "привет"</code> составить <code>target = "ветер"</code></li>
+            <li>Для <code>num = 12321</code> проверьте, является ли оно палиндромом (читается одинаково слева направо)</li>
+            <li>Создайте <code>text = "I love Python"</code>. Зашифруйте его (сдвиг букв на +1: J mpwf Qzuipo)</li>
+            <li>Даны координаты шахматной клетки <code>pos = "e4"</code>. Определите её цвет (черная/белая)</li>
+            <li>Для треугольника со сторонами a, b, c определите его тип (равносторонний, равнобедренный, разносторонний)</li>
+            <li>Проверьте, является ли строка <code>s = "{[()]}"</code> корректной последовательностью скобок</li>
+            <li>Создайте калькулятор ИМТ: по <code>weight</code> и <code>height</code> определите категорию (недостаток, норма, избыток)</li>
+            <li>Реализуйте простой калькулятор (+, -, *, /) для двух чисел с проверкой деления на ноль</li>
+        </ol>
+    </div>
+
+    <div class="solution">
+        <h3>Пример решения задачи 36 (дни в месяце)</h3>
+        <pre><code>year = 2023
+month = 2
+
+if month == 2:
+    # Проверка на високосный год
+    if (year % 400 == 0) or (year % 100 != 0 and year % 4 == 0):
+        days = 29
+    else:
+        days = 28
+elif month in [4, 6, 9, 11]:
+    days = 30
+else:
+    days = 31
+
+print(f"В месяце {days} дней")</code></pre>
+    </div>
+
+    <div class="note">
+        <p>Для решения сложных задач может потребоваться изучение следующих тем: списки, циклы, функции. Рекомендуется разбирать по 5-10 заданий за урок.</p>
+    </div>
+</body>
+</html>
