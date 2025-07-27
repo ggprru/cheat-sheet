@@ -113,5 +113,25 @@ entry.pack()
 button.pack()
 
 root.mainloop()</code></pre>
+
+  <h2>Свойства виджетов</h2>
+  <p><strong>Общие свойства для большинства виджетов:</strong></p>
+  <ul>
+    <li><code>text</code> — текст внутри виджета (Label, Button, Checkbutton, Radiobutton)</li>
+    <li><code>fg</code> — цвет текста (например, "red", "#ff0000")</li>
+    <li><code>bg</code> — цвет фона</li>
+    <li><code>font</code> — шрифт (например, <code>("Arial", 14)</code>)</li>
+    <li><code>padx</code>, <code>pady</code> — отступы внутри виджета</li>
+    <li><code>width</code>, <code>height</code> — ширина/высота (в символах или пикселях)</li>
+    <li><code>state</code> — "normal", "disabled"</li>
+  </ul>
+
+  <p><strong>Индивидуальные свойства:</strong></p>
+  <ul>
+    <li><code>command</code> — функция при нажатии (Button, Checkbutton, Radiobutton)</li>
+    <li><code>variable</code> — переменная (Checkbutton, Radiobutton)</li>
+    <li><code>value</code> — значение при выборе (Radiobutton)</li>
+    <li><code>show</code> — скрытие символов (например, для пароля в Entry)</li>
+  </ul>
 </body>
 </html>
