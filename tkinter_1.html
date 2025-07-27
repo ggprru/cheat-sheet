@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Tkinter Шпаргалка</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #3498db;
+      color: white;
+    }
+    code {
+      background-color: #eef;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      border-left: 4px solid #3498db;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tkinter Шпаргалка</h1>
+
+  <h2>Импорт и окно</h2>
+  <pre><code>import tkinter as tk
+
+root = tk.Tk()
+root.title("Пример")
+root.mainloop()</code></pre>
+
+  <h2>Label</h2>
+  <table>
+    <tr><th>Синтаксис</th><th>Параметры</th><th>Описание</th></tr>
+    <tr><td><code>tk.Label(root, text="Привет")</code></td><td>text, fg, bg, font</td><td>Метка с текстом</td></tr>
+  </table>
+
+  <h2>Button</h2>
+  <table>
+    <tr><th>Синтаксис</th><th>Параметры</th><th>Описание</th></tr>
+    <tr><td><code>tk.Button(root, text="Нажми", command=func)</code></td><td>text, command</td><td>Кнопка с действием</td></tr>
+  </table>
+
+  <h2>Entry</h2>
+  <table>
+    <tr><th>Синтаксис</th><th>Методы</th><th>Описание</th></tr>
+    <tr><td><code>tk.Entry(root)</code></td><td>.get(), .insert()</td><td>Поле ввода</td></tr>
+  </table>
+
+  <h2>Frame</h2>
+  <table>
+    <tr><th>Синтаксис</th><th>Описание</th></tr>
+    <tr><td><code>tk.Frame(root)</code></td><td>Контейнер для виджетов</td></tr>
+  </table>
+
+  <h2>Checkbutton</h2>
+  <table>
+    <tr><th>Синтаксис</th><th>Параметры</th><th>Описание</th></tr>
+    <tr><td><code>tk.Checkbutton(root, text="Выбор", variable=var)</code></td><td>text, variable</td><td>Флажок</td></tr>
+  </table>
+
+  <h2>Radiobutton</h2>
+  <table>
+    <tr><th>Синтаксис</th><th>Параметры</th><th>Описание</th></tr>
+    <tr><td><code>tk.Radiobutton(root, text="A", variable=var, value="A")</code></td><td>text, variable, value</td><td>Переключатель</td></tr>
+  </table>
+
+  <h2>Геометрия: pack / grid / place</h2>
+  <table>
+    <tr><th>Метод</th><th>Синтаксис</th><th>Описание</th></tr>
+    <tr><td>pack</td><td><code>widget.pack(side="left")</code></td><td>Простой способ размещения</td></tr>
+    <tr><td>grid</td><td><code>widget.grid(row=0, column=1)</code></td><td>Размещение по сетке</td></tr>
+    <tr><td>place</td><td><code>widget.place(x=50, y=100)</code></td><td>Точное позиционирование</td></tr>
+  </table>
+
+  <h2>Пример</h2>
+  <pre><code>import tkinter as tk
+
+def on_click():
+    label.config(text=entry.get())
+
+root = tk.Tk()
+label = tk.Label(root, text="Привет")
+entry = tk.Entry(root)
+button = tk.Button(root, text="Показать", command=on_click)
+
+label.pack()
+entry.pack()
+button.pack()
+
+root.mainloop()</code></pre>
+</body>
+</html>
